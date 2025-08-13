@@ -4,7 +4,7 @@ Clone fullstack do site diRavena desenvolvido em React + Node.js com integraçã
 
 ## 🚀 Demo
 
-- **Deploy:** [Link do Deploy]
+- **Deploy:** [[Link do Deploy](https://starmind-challenge.onrender.com/)]
 - **Repositório:** [https://github.com/AlectorAlexander/starmind-challenge](https://github.com/AlectorAlexander/starmind-challenge)
 
 ## ✨ Funcionalidades
