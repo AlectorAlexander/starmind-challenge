@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch server.ts",
-    "build": "tsc",
+    "build": "tsc && cd front && npm run build",
     "start": "node dist/server.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "dev:full": "concurrently \"npm run dev\" \"cd front && npm run dev\"",
     "start:full": "concurrently \"npm run start\" \"cd front && npm run build && npm run preview\"",
-    "install:all": "npm install && cd front && npm install"
+    "install:all": "npm install && cd front && npm install",
+    "deploy": "npm run install:all && npm run build && npm run start"
   },
   "repository": {
     "type": "git",

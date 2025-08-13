@@ -7,6 +7,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Servir arquivos estáticos do frontend em produção
+app.use(express.static("front/dist"))
+
 // Carrega produtos uma vez na inicialização
 const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
 
@@ -103,6 +106,11 @@ Responda de forma completa e útil:`
   } catch (err) {
     return res.status(500).json({ error: err.message })
   }
+})
+
+// Rota catch-all para SPA (deve vir depois das rotas da API)
+app.get("*", (req, res) => {
+  res.sendFile("index.html", { root: "front/dist" })
 })
 
 const PORT = process.env.PORT || 3001
