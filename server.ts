@@ -9,11 +9,11 @@ app.use(express.json())
 
 const initializeAI = async () => {
   try {
-    const products = JSON.parse(fs.readFileSync('./public/itens.json', 'utf8'))
+    const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
     const initPrompt = `Você é um atendente especializado na loja diRavena.
-Responda sempre em português, de forma breve, objetiva e cordial.
-Use APENAS as informações do produto fornecidas no contexto.
-Se não houver dado no contexto, diga que não possui essa informação.
+    Responda sempre em português, de forma breve, objetiva e cordial.
+    Use APENAS as informações do produto fornecidas no contexto.
+    Se não houver dado no contexto, diga que não possui essa informação.
 
 Produtos disponíveis:
 ${JSON.stringify(products, null, 2)}
@@ -50,11 +50,11 @@ app.post("/api/ask", async (req, res) => {
   }
 
   try {
-    const products = JSON.parse(fs.readFileSync('./public/itens.json', 'utf8'))
+    const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
     const prompt = `Você é um atendente especializado na loja diRavena.
-Responda sempre em português, de forma breve, objetiva e cordial.
-Use APENAS as informações do produto fornecidas no contexto.
-Se não houver dado no contexto, diga que não possui essa informação.
+    Responda sempre em português, de forma breve, objetiva e cordial.
+    Use APENAS as informações do produto fornecidas no contexto.
+    Se não houver dado no contexto, diga que não possui essa informação.
 
 Produtos disponíveis:
 ${JSON.stringify(products, null, 2)}
