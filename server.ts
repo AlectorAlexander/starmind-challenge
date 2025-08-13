@@ -108,11 +108,6 @@ Responda de forma completa e útil:`
   }
 })
 
-// Rota catch-all para SPA (deve vir depois das rotas da API)
-app.get("/*", (req, res) => {
-  res.sendFile("index.html", { root: "front/dist" })
-})
-
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`)
