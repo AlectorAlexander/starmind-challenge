@@ -10,6 +10,12 @@ app.use(express.json())
 // Servir arquivos estáticos do frontend em produção
 app.use(express.static("front/dist"))
 
+// Rota de teste
+app.get("/api/test", (req, res) => {
+  console.log("Rota de teste chamada")
+  res.json({ message: "API funcionando!", timestamp: new Date().toISOString() })
+})
+
 // Carrega produtos uma vez na inicialização
 const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
 
@@ -55,8 +61,10 @@ Se entendeu, responda: "Estou pronto para responder as perguntas"`
 }
 
 app.post("/api/ask", async (req, res) => {
+  console.log("=== API /ask chamada ===", { body: req.body, headers: req.headers })
   const { question } = req.body
   if (!question) {
+    console.log("Erro: Pergunta não informada")
     return res.status(400).json({ error: "Pergunta não informada" })
   }
 
