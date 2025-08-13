@@ -124,8 +124,8 @@ Responda de forma completa e útil:`
   }
 })
 
-// Fallback para rotas /api/* não encontradas
-app.use("/api/*", (req, res) => {
+// Fallback para rotas /api não encontradas
+app.use("/api", (req, res) => {
   console.log(`⚠️ ROTA API NÃO ENCONTRADA: ${req.method} ${req.originalUrl}`)
   res.status(404).json({ error: "Rota não encontrada", path: req.originalUrl })
 })
