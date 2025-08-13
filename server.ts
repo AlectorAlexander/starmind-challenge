@@ -32,7 +32,7 @@ INSTRUÇÕES IMPORTANTES:
 Produtos disponíveis:
 ${JSON.stringify(products, null, 2)}
 
-Se entendeu, responda: "Estou pronto para responder as perguntas"`
+Se entendeu, responda: "Oi! Sou seu assistente virtual da diRavena. Posso te ajudar com informações sobre nossos produtos!"`
 
     const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -123,6 +123,7 @@ app.use(express.static("front/dist"))
 
 const PORT = process.env.BACKEND_PORT || process.env.PORT || 3001
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`)
+  console.log(`🚀 SERVIDOR ATUALIZADO RODANDO NA PORTA ${PORT} 🚀`)
+  console.log(`📍 Rotas disponíveis: GET /api/test, POST /api/ask`)
   initializeAI()
 })
