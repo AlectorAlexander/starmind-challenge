@@ -7,6 +7,12 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Interceptar TODAS as rotas /api/* para debug
+app.use("/api", (req, res, next) => {
+  console.log(`📍 API REQUEST: ${req.method} ${req.path}`, { body: req.body })
+  next()
+})
+
 // Rota de teste
 app.get("/api/test", (req, res) => {
   console.log("Rota de teste chamada")
@@ -116,6 +122,12 @@ Responda de forma completa e útil:`
   } catch (err) {
     return res.status(500).json({ error: err instanceof Error ? err.message : String(err) })
   }
+})
+
+// Fallback para rotas /api/* não encontradas
+app.use("/api/*", (req, res) => {
+  console.log(`⚠️ ROTA API NÃO ENCONTRADA: ${req.method} ${req.originalUrl}`)
+  res.status(404).json({ error: "Rota não encontrada", path: req.originalUrl })
 })
 
 // Servir arquivos estáticos do frontend em produção (DEPOIS das rotas da API)

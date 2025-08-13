@@ -18,13 +18,17 @@ const ChatBot = () => {
     setIsLoading(true)
 
     try {
-      const response = await axios.post("/api/ask", {
-        question: inputText
-      })
+      const url = "/api/ask"
+      const payload = { question: inputText }
+      console.log("🚀 ENVIANDO REQUISIÇÃO:", { url: window.location.origin + url, payload })
+      
+      const response = await axios.post(url, payload)
+      console.log("✅ RESPOSTA RECEBIDA:", { status: response.status, data: response.data })
       
       const botMessage = { text: response.data.answer, isUser: false }
       setMessages(prev => [...prev, botMessage])
-    } catch {
+    } catch (error) {
+      console.log("❌ ERRO NA REQUISIÇÃO:", error)
       const errorMessage = { text: "Desculpe, ocorreu um erro. Tente novamente.", isUser: false }
       setMessages(prev => [...prev, errorMessage])
     } finally {
