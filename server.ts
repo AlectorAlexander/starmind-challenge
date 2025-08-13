@@ -98,11 +98,16 @@ Responda de forma completa e útil:`
     })
 
     const data = await resp.json()
+    console.log("Groq API Response:", { status: resp.status, data })
+    
     if (!resp.ok) {
+      console.log("Groq API Error:", data)
       return res.status(resp.status).json(data)
     }
 
-    return res.json({ answer: data.choices[0].message.content })
+    const answer = data.choices?.[0]?.message?.content || "Resposta vazia da API"
+    console.log("Answer:", answer)
+    return res.json({ answer })
   } catch (err) {
     return res.status(500).json({ error: err instanceof Error ? err.message : String(err) })
   }
