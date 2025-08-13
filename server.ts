@@ -108,7 +108,7 @@ Responda de forma completa e útil:`
   }
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 10000
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`)
   initializeAI()
