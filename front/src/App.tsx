@@ -5,7 +5,7 @@ import ChatBot from './components/ChatBot'
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column min-vh-100 p-0 m-0">
       <Header />
       <Main />
       <Footer />

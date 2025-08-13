@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "dev:full": "concurrently \"npm run dev\" \"cd front && npm run dev\"",
-    "start:full": "concurrently \"npm run start\" \"cd front && npm run build && npm run preview\""
+    "start:full": "concurrently \"npm run start\" \"cd front && npm run build && npm run preview\"",
+    "install:all": "npm install && cd front && npm install"
   },
   "repository": {
     "type": "git",

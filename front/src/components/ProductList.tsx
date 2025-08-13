@@ -31,17 +31,33 @@ const ProductList = () => {
   }, [])
 
   return (
-    <Row>
+    <Row className="g-3">
       {products.map((product, index) => (
-        <Col md={6} lg={4} key={index} className="mb-4">
-          <Card className="h-100">
-            <Card.Img variant="top" src={product.image} style={{ height: "200px", objectFit: "cover" }} />
-            <Card.Body className="d-flex flex-column">
-              <Card.Title className="small">{product.title}</Card.Title>
+        <Col xs={12} sm={6} md={4} lg={3} xl={3} key={index}>
+          <Card className="h-100 shadow-sm">
+            <Card.Img 
+              variant="top" 
+              src={product.image} 
+              style={{ 
+                height: "180px", 
+                objectFit: "cover",
+                borderRadius: "0.375rem 0.375rem 0 0"
+              }} 
+            />
+            <Card.Body className="d-flex flex-column p-3">
+              <Card.Title className="fs-6 fw-bold text-truncate" title={product.title}>
+                {product.title}
+              </Card.Title>
               <div className="mt-auto">
-                <h5 className="text-success">R$ {product.promo_price.toFixed(2)}</h5>
-                <p className="text-muted small">{product.installments}</p>
-                <Button variant="primary" href={product.url} target="_blank" size="sm">
+                <h5 className="text-success mb-1 fs-5">R$ {product.promo_price.toFixed(2)}</h5>
+                <p className="text-muted small mb-2">{product.installments}</p>
+                <Button 
+                  variant="primary" 
+                  href={product.url} 
+                  target="_blank" 
+                  size="sm"
+                  className="w-100"
+                >
                   Ver Produto
                 </Button>
               </div>
