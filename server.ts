@@ -7,9 +7,6 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Servir arquivos estáticos do frontend em produção
-app.use(express.static("front/dist"))
-
 // Rota de teste
 app.get("/api/test", (req, res) => {
   console.log("Rota de teste chamada")
@@ -120,6 +117,9 @@ Responda de forma completa e útil:`
     return res.status(500).json({ error: err instanceof Error ? err.message : String(err) })
   }
 })
+
+// Servir arquivos estáticos do frontend em produção (DEPOIS das rotas da API)
+app.use(express.static("front/dist"))
 
 const PORT = process.env.PORT || 10000
 app.listen(PORT, () => {
