@@ -1,0 +1,34 @@
+{
+  "name": "starmind-challenge",
+  "version": "1.0.0",
+  "description": "Clone fullstack do site diRavena, desenvolvido em React + Vite + Tailwind no front e Node.js + Express no back. Lista de produtos em JSON local, integração com IA gratuita via Hugging Face Inference API para responder perguntas sobre os produtos. Layout responsivo, sem carrinho, página única, pronto para rodar localmente.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlectorAlexander/starmind-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlectorAlexander/starmind-challenge/issues"
+  },
+  "homepage": "https://github.com/AlectorAlexander/starmind-challenge#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
+  }
+}
