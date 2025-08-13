@@ -24,7 +24,7 @@ const ChatBot = () => {
       
       const botMessage = { text: response.data.answer, isUser: false }
       setMessages(prev => [...prev, botMessage])
-    } catch (error) {
+    } catch {
       const errorMessage = { text: "Desculpe, ocorreu um erro. Tente novamente.", isUser: false }
       setMessages(prev => [...prev, errorMessage])
     } finally {
