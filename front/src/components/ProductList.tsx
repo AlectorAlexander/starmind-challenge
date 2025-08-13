@@ -33,7 +33,7 @@ const ProductList = () => {
   return (
     <Row className="g-3">
       {products.map((product, index) => (
-        <Col xs={12} sm={6} md={4} lg={3} xl={3} key={index}>
+        <Col xs={12} sm={6} md={4} lg={3} xl={3} key={`${product.url}-${index}`}>
           <a 
             href={product.url} 
             target="_blank" 

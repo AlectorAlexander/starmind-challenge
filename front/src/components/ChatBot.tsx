@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Button, Card, Form, InputGroup } from "react-bootstrap"
 import { FaWhatsapp, FaTimes, FaPaperPlane } from "react-icons/fa"
 import axios from "axios"
@@ -9,7 +9,7 @@ const ChatBot = () => {
   const [inputText, setInputText] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  const sendMessage = async () => {
+  const sendMessage = useCallback(async () => {
     if (!inputText.trim()) return
 
     const userMessage = { text: inputText, isUser: true }
@@ -30,7 +30,7 @@ const ChatBot = () => {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [inputText])
 
   return (
     <>
@@ -40,7 +40,7 @@ const ChatBot = () => {
           position: "fixed",
           bottom: "20px",
           right: "20px",
-          zIndex: 1000
+          zIndex: 9999
         }}
       >
         <Button
@@ -63,7 +63,7 @@ const ChatBot = () => {
             right: "20px",
             width: "min(350px, calc(100vw - 40px))",
             height: "min(400px, calc(100vh - 120px))",
-            zIndex: 1000
+            zIndex: 9999
           }}
         >
           <Card.Header className="bg-success text-white">
@@ -137,7 +137,7 @@ const ChatBot = () => {
       {isOpen && (
         <div 
           className="d-block d-sm-none position-fixed top-0 start-0 w-100 h-100 bg-white"
-          style={{ zIndex: 1050 }}
+          style={{ zIndex: 9999 }}
         >
           <div className="d-flex flex-column h-100">
             <div className="bg-success text-white p-3 d-flex justify-content-between align-items-center">

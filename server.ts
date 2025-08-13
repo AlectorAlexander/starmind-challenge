@@ -7,18 +7,26 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Carrega produtos uma vez na inicialização
+const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
+
 const initializeAI = async () => {
   try {
-    const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
-    const initPrompt = `Você é um atendente especializado na loja diRavena.
-    Responda sempre em português, de forma breve, objetiva e cordial.
-    Use APENAS as informações do produto fornecidas no contexto.
-    Se não houver dado no contexto, diga que não possui essa informação.
+    const initPrompt = `Você é um atendente especializado da loja diRavena.
+
+INSTRUÇÕES IMPORTANTES:
+1. Responda sempre em português, de forma cordial e útil
+2. Use APENAS as informações dos produtos fornecidas abaixo
+3. Quando perguntarem sobre preços, SEMPRE mencione o valor exato
+4. Quando perguntarem por links ou quiserem "mais detalhes", SEMPRE forneça o URL completo do produto
+5. Para comparações de preços, analise todos os produtos e dê a resposta correta
+6. Seja proativo: se mencionarem um produto, já ofereça preço, parcelamento e link
+7. Nunca diga que "não possui informações" se os dados estão disponíveis nos produtos
 
 Produtos disponíveis:
 ${JSON.stringify(products, null, 2)}
 
-Se você entendeu as instruções, responda apenas: "Estou pronto para responder as perguntas"`
+Se entendeu, responda: "Estou pronto para responder as perguntas"`
 
     const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -50,19 +58,27 @@ app.post("/api/ask", async (req, res) => {
   }
 
   try {
-    const products = JSON.parse(fs.readFileSync("./public/itens.json", "utf8"))
-    const prompt = `Você é um atendente especializado na loja diRavena.
-    Responda sempre em português, de forma breve, objetiva e cordial.
-    Use APENAS as informações do produto fornecidas no contexto.
-    Se não houver dado no contexto, diga que não possui essa informação.
+    const prompt = `Você é um atendente especializado da loja diRavena.
+
+INSTRUÇÕES IMPORTANTES:
+1. Responda sempre em português, de forma cordial e útil
+2. Use APENAS as informações dos produtos fornecidas abaixo
+3. Quando perguntarem sobre preços, SEMPRE mencione o valor exato
+4. Quando perguntarem por links ou quiserem "mais detalhes", SEMPRE forneça o URL completo do produto
+5. Para comparações de preços, analise todos os produtos e dê a resposta correta
+6. Seja proativo: se mencionarem um produto, já ofereça preço, parcelamento e link
+7. Nunca diga que "não possui informações" se os dados estão disponíveis nos produtos
 
 Produtos disponíveis:
 ${JSON.stringify(products, null, 2)}
 
-Pergunta do cliente:
-"${question}"
+Exemplos de respostas ideais:
+- "O produto mais barato é o [nome] por R$ [preço]. Link: [url]"
+- "Este produto custa R$ [preço], parcelado em [parcelas]. Veja mais detalhes: [url]"
 
-Responda em até 3 frases, sem inventar detalhes.`
+Pergunta do cliente: "${question}"
+
+Responda de forma completa e útil:`
 
     const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
