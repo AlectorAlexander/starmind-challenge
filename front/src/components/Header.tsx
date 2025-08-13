@@ -2,7 +2,7 @@ import { Navbar, Container } from "react-bootstrap"
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="py-3 w-100" fluid>
+    <Navbar bg="dark" variant="dark" expand="lg" className="py-3 w-100">
       <Container>
         <Navbar.Brand href="#home" className="fw-bold fs-3">
           diRavena
