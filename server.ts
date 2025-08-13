@@ -50,7 +50,7 @@ Se entendeu, responda: "Estou pronto para responder as perguntas"`
       console.log("Erro ao inicializar IA:", data)
     }
   } catch (err) {
-    console.log("Erro ao inicializar IA:", err.message)
+    console.log("Erro ao inicializar IA:", err instanceof Error ? err.message : String(err))
   }
 }
 
@@ -104,7 +104,7 @@ Responda de forma completa e útil:`
 
     return res.json({ answer: data.choices[0].message.content })
   } catch (err) {
-    return res.status(500).json({ error: err.message })
+    return res.status(500).json({ error: err instanceof Error ? err.message : String(err) })
   }
 })
 
