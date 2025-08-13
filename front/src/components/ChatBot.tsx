@@ -18,7 +18,7 @@ const ChatBot = () => {
     setIsLoading(true)
 
     try {
-      const response = await axios.post("http://localhost:3001/api/ask", {
+      const response = await axios.post("/api/ask", {
         question: inputText
       })
       
