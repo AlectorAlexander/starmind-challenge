@@ -109,7 +109,7 @@ Responda de forma completa e útil:`
 })
 
 // Rota catch-all para SPA (deve vir depois das rotas da API)
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile("index.html", { root: "front/dist" })
 })
 
