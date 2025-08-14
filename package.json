@@ -4,15 +4,10 @@
   "description": "Clone fullstack do site diRavena, desenvolvido em React + Vite + Tailwind no front e Node.js + Express no back. Lista de produtos em JSON local, integração com IA gratuita via Hugging Face Inference API para responder perguntas sobre os produtos. Layout responsivo, sem carrinho, página única, pronto para rodar localmente.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch server.ts",
-    "build": "tsc && cd front && npm run build",
-    "start": "node dist/server.js",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
-    "dev:full": "concurrently \"npm run dev\" \"cd front && npm run dev\"",
-    "start:full": "npm run build && npm run start",
-    "install:all": "npm install && cd front && npm install",
-    "deploy": "npm run install:all && npm run build && npm run start"
+    "dev": "cd front && npm run dev",
+    "build": "cd front && npm run build",
+    "start": "cd front && npm run preview",
+    "install:all": "cd front && npm install"
   },
   "repository": {
     "type": "git",
