@@ -4,7 +4,8 @@ Clone fullstack do site diRavena desenvolvido em React + Node.js com integraçã
 
 ## 🚀 Demo
 
-- **Deploy:** [[Link do Deploy](https://starmind-challenge.onrender.com/)]
+- **Frontend:** [https://starmind-challenge.onrender.com/](https://starmind-challenge.onrender.com/)
+- **API Backend:** [https://starmind-challenge-api.onrender.com/](https://starmind-challenge-api.onrender.com/)
 - **Repositório:** [https://github.com/AlectorAlexander/starmind-challenge](https://github.com/AlectorAlexander/starmind-challenge)
 
 ## ✨ Funcionalidades
@@ -172,6 +173,26 @@ A IA utiliza a Groq API com o modelo Llama 3-8B e possui:
 GROQ_API_KEY=sua_chave_da_groq_api
 PORT=3001
 ```
+
+## 🏢 Arquitetura de Deploy
+
+### Desenvolvimento Local
+- **Fullstack**: Frontend + Backend na mesma aplicação
+- **Comando**: `npm run dev:full`
+- **Portas**: Frontend (5173) + Backend (3001)
+
+### Produção (Render)
+- **Frontend**: Deploy da branch `main` (React + Vite)
+- **Backend**: Deploy da branch `api-only` (Node.js + Express)
+- **Comunicação**: Frontend faz requisições CORS para API separada
+
+### Branches
+- **`main`**: Código completo para desenvolvimento local
+- **`api-only`**: Apenas backend para deploy isolado
+
+### URLs de Produção
+- **Frontend**: https://starmind-challenge.onrender.com/
+- **API**: https://starmind-challenge-api.onrender.com/api/ask
 
 ## 📄 Licença
 
