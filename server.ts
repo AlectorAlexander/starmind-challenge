@@ -130,8 +130,7 @@ app.use("/api", (req, res) => {
   res.status(404).json({ error: "Rota não encontrada", path: req.originalUrl })
 })
 
-// Servir arquivos estáticos do frontend em produção (DEPOIS das rotas da API)
-app.use(express.static("front/dist"))
+// API-only - sem arquivos estáticos
 
 const PORT = process.env.BACKEND_PORT || process.env.PORT || 3001
 app.listen(PORT, () => {
