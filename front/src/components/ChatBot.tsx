@@ -18,9 +18,9 @@ const ChatBot = () => {
     setIsLoading(true)
 
     try {
-      const url = "/api/ask"
+      const url = "https://starmind-challenge-api.onrender.com/api/ask"
       const payload = { question: inputText }
-      console.log("🚀 ENVIANDO REQUISIÇÃO:", { url: window.location.origin + url, payload })
+      console.log("🚀 ENVIANDO REQUISIÇÃO:", { url, payload })
       
       const response = await axios.post(url, payload)
       console.log("✅ RESPOSTA RECEBIDA:", { status: response.status, data: response.data })
